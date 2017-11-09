@@ -35,9 +35,9 @@ require([
         $bookSearchResults = $('#book-search-results');
         $searchList = $bookSearchResults.find('.search-results-list');
         $searchTitle = $bookSearchResults.find('.search-results-title');
-        $searchResultsCount = $searchTitle.find('.search-results-count');
+        // $searchResultsCount = $searchTitle.find('.search-results-count');
         $searchQuery = $searchTitle.find('.search-query');
-
+        $searchTitle.html('<div>搜到<span class="result-title-cur">文档</span>相关的结果，共'+res.count+'条</div>')
         $bookSearchResults.addClass('open');
 
         var noResults = res.count == 0;
@@ -45,10 +45,6 @@ require([
 
         // Clear old results
         $searchList.empty();
-
-        // Display title for research
-        $searchResultsCount.text(res.count);
-        $searchQuery.text(res.query);
 
         // Create an <li> element for each result
         res.results.forEach(function(item) {
