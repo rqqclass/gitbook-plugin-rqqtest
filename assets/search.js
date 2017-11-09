@@ -132,8 +132,7 @@ require([
 
         // Launch query based on input content
         function handleUpdate() {
-            var $searchInput = $('#book-search-input input');
-            var keyword = $searchInput.val();
+           
 
             // if (keyword.length == 0) {
             //     closeSearch();
@@ -142,6 +141,8 @@ require([
             // }
         }
         $body.on('click','#book-search-button',function(){
+            var $searchInput = $('#book-search-input input');
+            var keyword = $searchInput.val();
             if (keyword.length == 0) {
                 closeSearch();
             } else {

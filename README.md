@@ -1,26 +1,10 @@
-## gitbook-plugin-search-pro
+## gitbook-plugin-rqqtest
 
-Gitbook search engine pro. (支持中文搜索)
+Gitbook search engine pro. (带按钮搜索)
 
 You can search any characters(utf-8) and highlight it in your GitBook, not only english(exp:Chinese).
 
 > Note: Only gitbook >= 3.0.0 support
-
-### Demo preview
-
----
-
-![](https://github.com/gitbook-plugins/gitbook-plugin-search-pro/blob/master/previews/search1.gif)
-
----
-
-![](https://github.com/gitbook-plugins/gitbook-plugin-search-pro/blob/master/previews/search2.gif)
-
----
-
-![](https://github.com/gitbook-plugins/gitbook-plugin-search-pro/blob/master/previews/search3.gif)
-
----
 
 ### Usage
 
@@ -35,18 +19,7 @@ Here is a `book.js` configuration example:
 }
 ```
 
-### Example
-    
-After installed gitbook.
-    
-```
-    > git clone git@github.com:gitbook-plugins/gitbook-plugin-search-pro.git -b gh-pages
-    > cd ./gitbook-plugin-search-pro
-    > npm install
-    > gitbook serve ./
-```
 
-And then open http://127.0.0.1:4000
 
 
 ### Thanks:
