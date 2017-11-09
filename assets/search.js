@@ -145,6 +145,18 @@ require([
                 launchSearch(keyword);
             }
         })
+        $body.on('keyup', '#book-search-input input', function(e) {
+            if (e.keyCode === 13) {
+                var $searchInput = $('#book-search-input input');
+                var keyword = $searchInput.val();
+                if (keyword.length == 0) {
+                    closeSearch();
+                } else {
+                    launchSearch(keyword);
+                }
+            }
+           
+        });
         // $body.on('keyup', '#book-search-input input', function(e) {
         //     if (e.keyCode === 13) {
         //         if (usePushState) {
