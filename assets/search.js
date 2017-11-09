@@ -135,35 +135,41 @@ require([
             var $searchInput = $('#book-search-input input');
             var keyword = $searchInput.val();
 
+            // if (keyword.length == 0) {
+            //     closeSearch();
+            // } else {
+            //     launchSearch(keyword);
+            // }
+        }
+        $body.on('click','#book-search-button',function(){
             if (keyword.length == 0) {
                 closeSearch();
             } else {
                 launchSearch(keyword);
             }
-        }
-
-        $body.on('keyup', '#book-search-input input', function(e) {
-            if (e.keyCode === 13) {
-                if (usePushState) {
-                    var uri = updateQueryString('q', $(this).val());
-                    history.pushState({
-                        path: uri
-                    }, null, uri);
-                }
-            }
-            handleUpdate();
-        });
+        })
+        // $body.on('keyup', '#book-search-input input', function(e) {
+        //     if (e.keyCode === 13) {
+        //         if (usePushState) {
+        //             var uri = updateQueryString('q', $(this).val());
+        //             history.pushState({
+        //                 path: uri
+        //             }, null, uri);
+        //         }
+        //     }
+        //     handleUpdate();
+        // });
 
         // Push to history on blur
-        $body.on('blur', '#book-search-input input', function(e) {
-            // Update history state
-            if (usePushState) {
-                var uri = updateQueryString('q', $(this).val());
-                history.pushState({
-                    path: uri
-                }, null, uri);
-            }
-        });
+        // $body.on('blur', '#book-search-input input', function(e) {
+        //     // Update history state
+        //     if (usePushState) {
+        //         var uri = updateQueryString('q', $(this).val());
+        //         history.pushState({
+        //             path: uri
+        //         }, null, uri);
+        //     }
+        // });
     }
 
     gitbook.events.on('start', function() {
