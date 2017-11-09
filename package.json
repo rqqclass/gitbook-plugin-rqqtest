@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-rqqtest",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "sync gitbook to ftp server after each build",
   "main": "index.js",
   "scripts": {
@@ -12,11 +12,10 @@
   },
   "keywords": [
     "gitbook",
-    "plugin",
-    "ftp"
+    "plugin"
   ],
   "author": "ruanqq",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "engines": {
     "gitbook": "*"
   }
