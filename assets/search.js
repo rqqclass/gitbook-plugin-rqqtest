@@ -1,7 +1,7 @@
 require([
     'gitbook',
     'jquery'
-], function(gitbook, $) {
+], function (gitbook, $) {
     var MAX_DESCRIPTION_SIZE = 500;
     var state = gitbook.state;
     var INDEX_DATA = {};
@@ -19,11 +19,11 @@ require([
     function throttle(fn, wait) {
         var timeout;
 
-        return function() {
+        return function () {
             var ctx = this,
                 args = arguments;
             if (!timeout) {
-                timeout = setTimeout(function() {
+                timeout = setTimeout(function () {
                     timeout = null;
                     fn.apply(ctx, args);
                 }, wait);
@@ -32,12 +32,16 @@ require([
     }
 
     function displayResults(res) {
+        function safeStr(str) {
+            return str.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+        res.query = safeStr(res.query)
         $bookSearchResults = $('#book-search-results');
         $searchList = $bookSearchResults.find('.search-results-list');
         $searchTitle = $bookSearchResults.find('.search-results-title');
         // $searchResultsCount = $searchTitle.find('.search-results-count');
         $searchQuery = $searchTitle.find('.search-query');
-        $searchTitle.html('<div>搜到<span class="result-title-cur">'+res.query+'</span>相关的结果，共'+res.count+'条</div>')
+        $searchTitle.html('<div>搜到<span class="result-title-cur">' + res.query + '</span>相关的结果，共' + res.count + '条</div>')
         $bookSearchResults.addClass('open');
 
         var noResults = res.count == 0;
@@ -47,7 +51,7 @@ require([
         $searchList.empty();
 
         // Create an <li> element for each result
-        res.results.forEach(function(item) {
+        res.results.forEach(function (item) {
             var $li = $('<li>', {
                 'class': 'search-results-item'
             });
@@ -128,7 +132,7 @@ require([
 
         // Launch query based on input content
         function handleUpdate() {
-           
+
 
             // if (keyword.length == 0) {
             //     closeSearch();
@@ -136,7 +140,7 @@ require([
             //     launchSearch(keyword);
             // }
         }
-        $body.on('click','#book-search-button',function(){
+        $body.on('click', '#book-search-button', function () {
             var $searchInput = $('#book-search-input input');
             var keyword = $searchInput.val();
             if (keyword.length == 0) {
@@ -145,7 +149,7 @@ require([
                 launchSearch(keyword);
             }
         })
-        $body.on('keyup', '#book-search-input input', function(e) {
+        $body.on('keyup', '#book-search-input input', function (e) {
             if (e.keyCode === 13) {
                 var $searchInput = $('#book-search-input input');
                 var keyword = $searchInput.val();
@@ -155,7 +159,7 @@ require([
                     launchSearch(keyword);
                 }
             }
-           
+
         });
         // $body.on('keyup', '#book-search-input input', function(e) {
         //     if (e.keyCode === 13) {
@@ -181,9 +185,9 @@ require([
         // });
     }
 
-    gitbook.events.on('start', function() {
+    gitbook.events.on('start', function () {
         bindSearch();
-        $.getJSON(state.basePath + "/search_plus_index.json").then(function(data) {
+        $.getJSON(state.basePath + "/search_plus_index.json").then(function (data) {
             INDEX_DATA = data;
             showResult();
             closeSearch();
@@ -191,14 +195,14 @@ require([
     });
 
     // 高亮文本
-    var highLightPageInner = function(keyword) {
+    var highLightPageInner = function (keyword) {
         $('.page-inner').mark(keyword, {
             'ignoreJoiners': true,
             'acrossElements': true,
             'separateWordSearch': false
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             var mark = $('mark[data-markjs="true"]');
             if (mark.length) {
                 mark[0].scrollIntoView();
@@ -235,7 +239,7 @@ require([
     function updateQueryString(key, value) {
         value = encodeURIComponent(value);
 
-        var url = window.location.href.replace(/([?&])(?:q|h)=([^&]+)(&|$)/, function(all, pre, value, end) {
+        var url = window.location.href.replace(/([?&])(?:q|h)=([^&]+)(&|$)/, function (all, pre, value, end) {
             if (end === '&') {
                 return pre;
             }
@@ -266,9 +270,9 @@ require([
                 return url;
         }
     }
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
         if (e.target.tagName === 'A' && e.target.getAttribute('data-need-reload')) {
-            setTimeout(function() {
+            setTimeout(function () {
                 location.reload();
             }, 100);
         }

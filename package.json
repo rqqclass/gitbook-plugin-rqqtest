@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-rqqtest",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "sync gitbook to ftp server after each build",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
