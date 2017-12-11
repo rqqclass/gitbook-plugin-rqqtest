@@ -41,7 +41,7 @@ require([
         $searchTitle = $bookSearchResults.find('.search-results-title');
         // $searchResultsCount = $searchTitle.find('.search-results-count');
         $searchQuery = $searchTitle.find('.search-query');
-        $searchTitle.html('<div>搜到<span class="result-title-cur">' + res.query + '</span>相关的结果，共' + res.count + '条</div>')
+        $searchTitle.html('<div>&#25628;&#21040;<span class="result-title-cur">' + res.query + '</span>&#30456;&#20851;&#30340;&#32467;&#26524;&#65292;&#20849;' + res.count + '&#26465;</div>');
         $bookSearchResults.addClass('open');
 
         var noResults = res.count == 0;
